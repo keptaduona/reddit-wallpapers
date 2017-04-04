@@ -48,7 +48,7 @@ p, div {
     /* Just in case there are inline attributes */
     margin: 2px;
     position: relative;
-    transition: background-color 0.5s;
+    background-color: black;
 }
 
 .image-thumbnail {
@@ -59,10 +59,6 @@ p, div {
     transform: rotate(0);
     -webkit-backface-visibility: hidden;
     min-height: 200px;
-}
-
-.image-container-fade {
-    background-color: black;
 }
 
 .image-thumbnail-fade {

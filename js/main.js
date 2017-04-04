@@ -51,7 +51,6 @@ function displayImage(queryObject) {
 }
 
 function togglePhotoDetails(item) {
-    $('.' + item).toggleClass('image-container-fade');
     $('.' + item + ' .image-thumbnail').toggleClass('image-thumbnail-fade');
     $('.' + item + ' .author-details').fadeToggle('fast');
 }
