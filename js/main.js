@@ -1,21 +1,29 @@
+var links = [
+    'js/json-files/r_earth-porn.json',
+    'js/json-files/r_space-porn.json',
+    'js/json-files/r_pic.json'
+];
+
 var counter = 0;
 
-$.getJSON('js/json-files/r_earth-porn.json', function(response) {
-    displayImage(response);
-});
+$.each(links, function(key, value) {
+    $.getJSON(value, function(response) {
+        $.when(displayImage(response)).then(function() {
 
-$.getJSON('js/json-files/r_space-porn.json', function(response) {
-    displayImage(response);
-});
+            if(key == 2) {
+                $('.image-container').click(function() {
+                    let clickedImage = $(this).attr('class').split(' ')[1];
+                    togglePhotoDetails(clickedImage);
+                });
 
-$.getJSON('js/json-files/r_pic.json', function(response) {
-    displayImage(response);
+                $('.lazy').Lazy({
+                    onError: function(element) {
+                        $(element).remove();
+                    }
+                });
+            }
 
-    $('.lazy').Lazy({});
-
-    $('.image-container').click(function() {
-        let clickedImageText = $(this).attr('class').split(' ')[1];
-        togglePhotoDetails(clickedImageText);
+        });
     });
 });
 
@@ -29,10 +37,6 @@ function displayImage(queryObject) {
         let title = post.title;
         let author = post.author;
         let permalink = post.permalink;
-
-        if(picture.substring(picture.length-4, picture.length) != '.jpg') {
-            picture = picture.concat('.jpg');
-        }
 
         $('#photos').append("<div class='image-container image-container-" + counter +"'></div>");
         $('.image-container-' + counter).append("<img class='lazy image-thumbnail' data-src='" + picture + "'>");

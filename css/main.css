@@ -9,8 +9,6 @@ p, div {
     font-family: 'Raleway';
 }
 
-
-
 #photos {
     /* Prevent vertical gaps */
 
@@ -19,7 +17,7 @@ p, div {
     -moz-column-count:    3;
     -moz-column-gap:      0px;
     column-count:         3;
-    margin-top: 25px;
+    margin-top:           2px;
 }
 
 .nav-info {
@@ -60,6 +58,7 @@ p, div {
     -moz-transform: rotate(0);
     transform: rotate(0);
     -webkit-backface-visibility: hidden;
+    min-height: 200px;
 }
 
 .image-container-fade {
