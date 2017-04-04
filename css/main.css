@@ -43,6 +43,9 @@ p, div {
     font-weight: 600;
 }
 
+.lazy {
+    display: none;
+}
 
 .image-container {
     /* Just in case there are inline attributes */

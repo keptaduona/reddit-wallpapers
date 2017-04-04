@@ -4,9 +4,15 @@ var links = [
     'js/json-files/r_pic.json'
 ];
 
+// var testLinks = [
+//     'https://www.reddit.com/r/earthporn.json?limit=20',
+//     'https://www.reddit.com/r/pic.json?limit=20',
+//     'https://www.reddit.com/r/spaceporn.json?limit=20'
+// ];
+
 var counter = 0;
 
-$.each(links, function(key, value) {
+$.each(testLinks, function(key, value) {
     $.getJSON(value, function(response) {
         $.when(displayImage(response)).then(function() {
 
@@ -19,7 +25,12 @@ $.each(links, function(key, value) {
                 $('.lazy').Lazy({
                     onError: function(element) {
                         $(element).remove();
-                    }
+                    },
+                    afterLoad: function(element) {
+                        $(element).removeAttr('data-src');
+                    },
+                    scrollDirection: 'vertical',
+                    effect : "fadeIn"
                 });
             }
 
