@@ -27,9 +27,13 @@
                     <button type="button" class="close" data-dismiss="modal" aria-label="Close"><span aria-hidden="true">&times;</span></button>
                     <h4 style="text-align: center" class="modal-title" id="myModalLabel">Welcome!</h4>
                   </div>
+
                   <div class="modal-body">
-                    The website regularly retrieves pictures posted on reddit r/pic and r/EarthPorn and displays them here.
+                    <p>The website regularly retrieves pictures from posts on reddit r/pic, r/SpacePorn and r/EarthPorn and displays them here.</p>
+                    <p>I used Bootstrap, jQuery, jQuery Lazy and made a cron-job to retrieve content from reddit every hour using wget, which writes the JSON to a file. </p>
+                    <p id="credentials">Matas Kinderis<br><span style="color: blue">mataskind@gmail.com</span><br> <a href="https://github.com/kinderis94/reddit_photo_gallery">github</a></p>
                   </div>
+
                   <div class="modal-footer">
                     <button type="button" class="btn btn-default" data-dismiss="modal">Close</button>
                   </div>
@@ -39,12 +43,11 @@
 
         </section>
 
-        <script
-          src="https://code.jquery.com/jquery-3.2.1.min.js"
-          integrity="sha256-hwg4gsxgFZhOsEEamdOYGBf13FyQuiTwlAQgxVSNgt4="
-          crossorigin="anonymous"></script>
-        <script src="js/main.js"></script>
+        <script src='js/jquery-2.2.4.min.js'></script>
         <script src="https://maxcdn.bootstrapcdn.com/bootstrap/3.3.7/js/bootstrap.min.js"></script>
+        <script type="text/javascript" src="https://cdnjs.cloudflare.com/ajax/libs/jquery.lazy/1.7.4/jquery.lazy.min.js"></script>
+        <script type="text/javascript" src="https://cdnjs.cloudflare.com/ajax/libs/jquery.lazy/1.7.4/jquery.lazy.plugins.min.js"></script>
+        <script src="js/main.js"></script>
 
     </body>
 </html>
