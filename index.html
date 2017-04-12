@@ -17,9 +17,12 @@
             </div>
         </nav>
 
-        <div class="loader"></div>
+        <div class="loader-container">
+            <div class="loader"></div>
+            <h3>Loading...</h3>
+        </div>
 
-        <section id="photos">
+
 
             <!-- Modal -->
             <div class="modal fade" id="myModal" tabindex="-1" role="dialog" aria-labelledby="myModalLabel">
@@ -33,8 +36,8 @@
                   <div class="modal-body">
                     <p>The website regularly retrieves pictures from posts on reddit r/pic, r/SpacePorn and r/EarthPorn and displays them here.</p>
                     <p>Left mouse click shows details, links to full-screen and original post.</p>
-                    <p>I used Bootstrap, jQuery, jQuery Lazy and made a cron-job to retrieve content from reddit every hour using wget, which writes the JSON to a file. </p>
-                    <p id="credentials">Matas Kinderis<br><span style="color: blue">mataskind@gmail.com</span><br> <a href="https://github.com/kinderis94/reddit_photo_gallery">github</a></p>
+                    <p>I used Bootstrap, jQuery, jQuery Lazy and made a cron-job to retrieve content from reddit every hour using wget, which writes JSON to a file. </p>
+                    <p id="credentials"><a target="_blank" href="http://www.kinderis94.com"><span color="blue">Matas Kinderis</span></a><br><a href="https://github.com/kinderis94/reddit_photo_gallery">github</a></p>
                   </div>
 
                   <div class="modal-footer">
@@ -43,6 +46,8 @@
                 </div>
               </div>
             </div>
+
+        <section id="photos">
 
         </section>
 

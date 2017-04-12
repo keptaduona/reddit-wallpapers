@@ -40,7 +40,12 @@ p, div {
   -webkit-animation: spin 2s linear infinite;
   animation: spin 2s linear infinite;
   margin: 0 auto;
-  margin-top: 50px;
+}
+
+.loader-container {
+    text-align: center;
+    margin: 0 auto;
+    margin-top: 50px;
 }
 
 @-webkit-keyframes spin {

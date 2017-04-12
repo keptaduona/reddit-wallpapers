@@ -7,11 +7,11 @@ var links = [
 // For Testing
 //
 // var testLinks = [
-//     'https://www.reddit.com/r/earthporn.json?limit=20',
-//     'https://www.reddit.com/r/pic.json?limit=20',
-//     'https://www.reddit.com/r/spaceporn.json?limit=20'
+//     'https://www.reddit.com/r/earthporn.json?limit=50',
+//     'https://www.reddit.com/r/pic.json?limit=50',
+//     'https://www.reddit.com/r/spaceporn.json?limit=50'
 // ];
-//
+
 
 var counter = 0;
 
@@ -25,19 +25,20 @@ $.each(links, function(key, value) {
                     togglePhotoDetails(clickedImage);
                 });
 
-                $.when($('.lazy').Lazy({
+                $('.lazy').Lazy({
                     onError: function(element) {
                         $(element).remove();
                     },
                     afterLoad: function(element) {
                         $(element).removeAttr('data-src');
                     },
+                    onFinishedAll: function() {
+                        $('.loader-container').fadeOut('fast', function() {
+                            $('#photos').fadeIn('slow');
+                        });
+                    },
                     scrollDirection: 'vertical',
                     effect : "fadeIn"
-                })).then(function() {
-                    $.when($('.loader').delay(5000).fadeOut('fast')).then(function() {
-                        $('#photos').fadeIn('slow');
-                    })
                 });
             }
 
