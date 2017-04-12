@@ -6,7 +6,7 @@ var links = [
 
 // For Testing
 //
-// var testLinks = [
+// var links = [
 //     'https://www.reddit.com/r/earthporn.json?limit=50',
 //     'https://www.reddit.com/r/pic.json?limit=50',
 //     'https://www.reddit.com/r/spaceporn.json?limit=50'
@@ -14,6 +14,7 @@ var links = [
 
 
 var counter = 0;
+var imageCounter = 0;
 
 $.each(links, function(key, value) {
     $.getJSON(value, function(response) {
@@ -29,13 +30,14 @@ $.each(links, function(key, value) {
                     onError: function(element) {
                         $(element).remove();
                     },
-                    afterLoad: function(element) {
-                        $(element).removeAttr('data-src');
-                    },
                     onFinishedAll: function() {
                         $('.loader-container').fadeOut('fast', function() {
                             $('#photos').fadeIn('slow');
                         });
+                    },
+                    afterLoad: function(element) {
+                        imageCounter += 1;
+                        $('#loading-text').text(imageCounter + " out of 150");
                     },
                     scrollDirection: 'vertical',
                     effect : "fadeIn"
