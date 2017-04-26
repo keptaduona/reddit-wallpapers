@@ -14,12 +14,15 @@ var links = [
 
 
 var counter = 0;
+let currentProgress = 0;
 
 $.each(links, function(key, value) {
     $.getJSON(value, function(response) {
         $.when(displayImage(response)).then(function() {
 
             if(key == 2) {
+
+                counter = 0;
 
                 var $container = $('.grid');
 
@@ -33,7 +36,20 @@ $.each(links, function(key, value) {
                          let clickedImage = $(this).attr('class').split(' ')[1];
                          togglePhotoDetails(clickedImage);
                      });
-                });
+
+                     $('.progress').fadeOut('fast', function() {
+                         $('#photos').css({'opacity': '1'});
+                     });
+
+                })
+                    .progress( function( instance, image ) {
+                        counter += 1;
+                        loadingProgress = Math.round((counter/150)*100);
+                        $('.progress-bar')
+                            .text(loadingProgress + '%')
+                            .attr('aria-valuenow', loadingProgress)
+                            .css({'width': loadingProgress + '%'});
+                     });
             }
 
         });
