@@ -9,76 +9,23 @@ p, div {
     font-family: 'Raleway';
 }
 
-#photos {
-    /* Prevent vertical gaps */
-
-    -webkit-column-count: 3;
-    -webkit-column-gap:   0px;
-    -moz-column-count:    3;
-    -moz-column-gap:      0px;
-    column-count:         3;
-    margin-top:           2px;
-    display: none;
-}
-
 .nav-info {
-    display: flex;
-    align-items: center;
-    background-color: #2b2b2b;
-    height: 50px;
-    color: white;
-    position: relative;
-
-}
-
-.loader {
-  border: 16px solid #f3f3f3;
-  border-radius: 50%;
-  border-top: 16px solid #3498db;
-  width: 120px;
-  height: 120px;
-  -webkit-animation: spin 2s linear infinite;
-  animation: spin 2s linear infinite;
-  margin: 0 auto;
-}
-
-.loader-container {
     text-align: center;
-    margin: 0 auto;
-    margin-top: 50px;
+    margin: 5px;
 }
 
-@-webkit-keyframes spin {
-  0% { -webkit-transform: rotate(0deg); }
-  100% { -webkit-transform: rotate(360deg); }
-}
-
-@keyframes spin {
-  0% { transform: rotate(0deg); }
-  100% { transform: rotate(360deg); }
-}
-
-#site-nav {
-    margin: 0 auto;
-}
-
-#site-nav h4 {
-    cursor: pointer;
-}
-
-#site-nav h4:hover {
-    font-weight: 600;
-}
-
-.lazy {
-    display: none;
+.nav-info button, .nav-info button:focus,.nav-info button:active:focus,
+.nav-info button.active:focus,
+.nav-info button.focus,.nav-info button:active.focus,.nav-info button.active.focus {
+    border-radius: 10px;
+    outline: none;
 }
 
 .image-container {
-    /* Just in case there are inline attributes */
-    margin: 2px;
-    position: relative;
+    padding: 0 !important;
     background-color: black;
+    background-clip: padding-box;
+    border: 2px solid transparent;
 }
 
 .image-thumbnail {
@@ -118,19 +65,4 @@ p, div {
 
 .reddit-link:hover, .full-screen-link:hover {
     color: lightgrey;
-}
-
-@media (max-width: 1200px) {
-  #photos {
-  -moz-column-count:    2;
-  -webkit-column-count: 2;
-  column-count:         2;
-  }
-}
-@media (max-width: 800px) {
-  #photos {
-  -moz-column-count:    1;
-  -webkit-column-count: 1;
-  column-count:         1;
-  }
 }

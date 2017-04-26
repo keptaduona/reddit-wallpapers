@@ -5,7 +5,7 @@ var links = [
 ];
 
 // For Testing
-//
+
 // var links = [
 //     'https://www.reddit.com/r/earthporn.json?limit=50',
 //     'https://www.reddit.com/r/pic.json?limit=50',
@@ -14,33 +14,25 @@ var links = [
 
 
 var counter = 0;
-var imageCounter = 0;
 
 $.each(links, function(key, value) {
     $.getJSON(value, function(response) {
         $.when(displayImage(response)).then(function() {
 
             if(key == 2) {
-                $('.image-container').click(function() {
-                    let clickedImage = $(this).attr('class').split(' ')[1];
-                    togglePhotoDetails(clickedImage);
-                });
 
-                $('.lazy').Lazy({
-                    onError: function(element) {
-                        $(element).remove();
-                    },
-                    onFinishedAll: function() {
-                        $('.loader-container').fadeOut('fast', function() {
-                            $('#photos').fadeIn('slow');
-                        });
-                    },
-                    afterLoad: function(element) {
-                        imageCounter += 1;
-                        $('#loading-text').text(imageCounter + " out of 150");
-                    },
-                    scrollDirection: 'vertical',
-                    effect : "fadeIn"
+                var $container = $('.grid');
+
+                $container.imagesLoaded( function() {
+                     $container.masonry({
+                         itemSelector: '.grid-item',
+                         percentPosition: true
+                     });
+
+                     $('.image-container').click(function() {
+                         let clickedImage = $(this).attr('class').split(' ')[1];
+                         togglePhotoDetails(clickedImage);
+                     });
                 });
             }
 
@@ -48,10 +40,10 @@ $.each(links, function(key, value) {
     });
 });
 
+
+
 function displayImage(queryObject) {
     $.each(queryObject.data.children, function(item) {
-
-        counter += 1;
 
         let post = queryObject.data.children[item].data;
         let picture = post.url;
@@ -59,13 +51,25 @@ function displayImage(queryObject) {
         let author = post.author;
         let permalink = post.permalink;
 
-        $('#photos').append("<div class='image-container image-container-" + counter +"'></div>");
-        $('.image-container-' + counter).append("<img class='lazy image-thumbnail' data-src='" + picture + "'>");
-        $('.image-container-' + counter).append("<div class='author-details'><p>" + title + "</p></div>");
-        $('.image-container-' + counter + ' .author-details').append("<p>by " + author  + "</p>");
-        $('.image-container-' + counter + ' .author-details').append("<div class='author-links'></div>");
-        $('.image-container-' + counter + ' .author-links').append("<a class='reddit-link' target='_blank' href='https://www.reddit.com" + permalink + "'><span class='glyphicon glyphicon-comment'></span></a>");
-        $('.image-container-' + counter + ' .author-links').append("<a class='full-screen-link' target='_blank' href='" + picture + "'><span class='glyphicon glyphicon-resize-full'></span></a>");
+
+        if(picture.substr(picture.length - 3) == 'jpg') {
+            counter += 1;
+
+            $('#photos')
+                .append("<div class='image-container image-container-" + counter + " col-md-4 grid-item'></div>");
+            $('.image-container-' + counter)
+                .append("<img class='image-thumbnail' src='" + picture + "'>");
+            $('.image-container-' + counter)
+                .append("<div class='author-details'><p>" + title + "</p></div>");
+            $('.image-container-' + counter + ' .author-details')
+                .append("<p>by " + author  + "</p>");
+            $('.image-container-' + counter + ' .author-details')
+                .append("<div class='author-links'></div>");
+            $('.image-container-' + counter + ' .author-links')
+                .append("<a class='reddit-link' target='_blank' href='https://www.reddit.com" + permalink + "'><span class='glyphicon glyphicon-comment'></span></a>");
+            $('.image-container-' + counter + ' .author-links')
+                .append("<a class='full-screen-link' target='_blank' href='" + picture + "'><span class='glyphicon glyphicon-resize-full'></span></a>");
+        }
 
 
     });

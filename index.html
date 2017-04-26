@@ -9,20 +9,9 @@
     </head>
     <body>
 
-        <nav>
-            <div class="nav-info">
-                <div id="site-nav">
-                    <h4 data-toggle="modal" data-target="#myModal">about</h4>
-                </div>
-            </div>
-        </nav>
-
-        <div class="loader-container">
-            <div class="loader"></div>
-            <h3>Loading...</h3>
-            <h3 id="loading-text"></h3>
+        <div class="nav-info">
+                <button data-toggle="modal" data-target="#myModal" class="btn btn-info">?</h4>
         </div>
-
 
 
             <!-- Modal -->
@@ -31,14 +20,13 @@
                 <div class="modal-content">
                   <div class="modal-header">
                     <button type="button" class="close" data-dismiss="modal" aria-label="Close"><span aria-hidden="true">&times;</span></button>
-                    <h4 style="text-align: center" class="modal-title" id="myModalLabel">Welcome!</h4>
+                    <h4 style="text-align: center" class="modal-title" id="myModalLabel">Wallpaper?</h4>
                   </div>
 
                   <div class="modal-body">
                     <p>The website regularly retrieves pictures from posts on reddit r/pic, r/SpacePorn and r/EarthPorn and displays them here.</p>
                     <p>Left mouse click shows details, links to full-screen and original post.</p>
-                    <p>I used Bootstrap, jQuery, jQuery Lazy and made a cron-job to retrieve content from reddit every hour using wget, which writes JSON to a file. </p>
-                    <p id="credentials"><a target="_blank" href="http://www.kinderis94.com"><span color="blue">Matas Kinderis</span></a><br><a href="https://github.com/kinderis94/reddit_photo_gallery">github</a></p>
+                    <p id="credentials"><a href="https://github.com/kinderis94/reddit_photo_gallery">github</a></p>
                   </div>
 
                   <div class="modal-footer">
@@ -48,15 +36,17 @@
               </div>
             </div>
 
-        <section id="photos">
+        <div id="photos" class="grid">
 
-        </section>
+        </div>
 
         <script src='js/jquery-2.2.4.min.js'></script>
         <script src="https://maxcdn.bootstrapcdn.com/bootstrap/3.3.7/js/bootstrap.min.js"></script>
         <script type="text/javascript" src="https://cdnjs.cloudflare.com/ajax/libs/jquery.lazy/1.7.4/jquery.lazy.min.js"></script>
         <script type="text/javascript" src="https://cdnjs.cloudflare.com/ajax/libs/jquery.lazy/1.7.4/jquery.lazy.plugins.min.js"></script>
         <script src="js/main.js"></script>
+        <script src="https://unpkg.com/imagesloaded@4.1/imagesloaded.pkgd.min.js"></script>
+        <script src="js/masonry.pkgd.min.js"></script>
 
     </body>
 </html>
